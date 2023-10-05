@@ -25,7 +25,7 @@ struct YorokobiAlbumApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            HomeView(imageDatas: [])
         }
         .modelContainer(sharedModelContainer)
     }
