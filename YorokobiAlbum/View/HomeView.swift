@@ -13,34 +13,52 @@ struct HomeView: View {
     let columns = [GridItem(.adaptive(minimum: 160, maximum: 200), spacing: itemSpacing)]
 
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: Self.itemSpacing) {
-                ForEach(imageDatas, id: \.self) { imageData in
-                    VStack(spacing: 5) {
-                        Image(uiImage: UIImage(data: imageData)!)
-                            .resizable()
-                            .aspectRatio(1.0, contentMode: .fit)
-                        VStack(spacing: 0) {
-                            RateView(rate: 3)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Text("あいうえおあいうえおあいうえおあいうえおあいうえおあいうえお")
-                                .font(.custom("HiraKakuProN-W3", size: 14))
-                                .minimumScaleFactor(0.7)
-                                .multilineTextAlignment(.center)
-                                .lineLimit(3)
-                                .kerning(1)
-                                .frame(height: 50)
+        NavigationStack {
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: Self.itemSpacing) {
+                    ForEach(imageDatas, id: \.self) { imageData in
+                        VStack(spacing: 5) {
+                            Image(uiImage: UIImage(data: imageData)!)
+                                .resizable()
+                                .aspectRatio(1.0, contentMode: .fit)
+                            VStack(spacing: 0) {
+                                RateView(rate: 3)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Text("あいうえおあいうえおあいうえおあいうえおあいうえおあいうえお")
+                                    .font(.custom("HiraKakuProN-W3", size: 14))
+                                    .minimumScaleFactor(0.7)
+                                    .multilineTextAlignment(.center)
+                                    .lineLimit(3)
+                                    .kerning(1)
+                                    .frame(height: 50)
+                            }
+                            .padding(.horizontal, 12)
+                            .padding(.bottom, 10)
                         }
-                        .padding(.horizontal, 12)
-                        .padding(.bottom, 10)
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
-                    .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+                .padding(.horizontal, Self.itemSpacing)
+            }
+            .background(Color(UIColor.secondarySystemBackground))
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        // 並び替え
+                    }) {
+                        Image(systemName: "arrow.up.and.down.text.horizontal")
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                        // 追加
+                    }){
+                        Image(systemName: "plus")
+                    }
                 }
             }
-            .padding(.horizontal, Self.itemSpacing)
         }
-        .background(Color(UIColor.secondarySystemBackground))
     }
 }
 
