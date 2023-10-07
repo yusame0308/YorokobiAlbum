@@ -16,20 +16,24 @@ struct HomeView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: Self.itemSpacing) {
                 ForEach(imageDatas, id: \.self) { imageData in
-                    VStack(spacing: 6) {
+                    VStack(spacing: 5) {
                         Image(uiImage: UIImage(data: imageData)!)
                             .resizable()
                             .aspectRatio(1.0, contentMode: .fit)
-                        Text("あいうえおあいうえおあいうえおあいうえおあいうえおあいうえお")
-                            .font(.custom("HiraKakuProN-W3", size: 14))
-                            .minimumScaleFactor(0.7)
-                            .multilineTextAlignment(.center)
-                            .lineLimit(3)
-                            .kerning(1)
-                            .frame(height: 60)
-                            .padding(.horizontal, 12)
+                        VStack(spacing: 0) {
+                            RateView(rate: 3)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Text("あいうえおあいうえおあいうえおあいうえおあいうえおあいうえお")
+                                .font(.custom("HiraKakuProN-W3", size: 14))
+                                .minimumScaleFactor(0.7)
+                                .multilineTextAlignment(.center)
+                                .lineLimit(3)
+                                .kerning(1)
+                                .frame(height: 50)
+                        }
+                        .padding(.horizontal, 12)
+                        .padding(.bottom, 10)
                     }
-                    .padding(.bottom, 6)
                     .background(Color.white)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
