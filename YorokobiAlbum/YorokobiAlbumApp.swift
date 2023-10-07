@@ -25,7 +25,14 @@ struct YorokobiAlbumApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView(imageDatas: [])
+            HomeView(imageDatas: [
+                UIImage.sample1.pngData()!,
+                UIImage.sample2.pngData()!,
+                UIImage.sample3.pngData()!,
+                UIImage.sample4.pngData()!,
+                UIImage.sample5.pngData()!,
+                UIImage.sample6.pngData()!
+            ])
         }
         .modelContainer(sharedModelContainer)
     }

@@ -11,6 +11,7 @@ struct HomeView: View {
     let imageDatas: [Data]
     static let itemSpacing = 12.0
     let columns = [GridItem(.adaptive(minimum: 160, maximum: 200), spacing: itemSpacing)]
+    @State var showingAddView = false
 
     var body: some View {
         NavigationStack {
@@ -22,7 +23,7 @@ struct HomeView: View {
                                 .resizable()
                                 .aspectRatio(1.0, contentMode: .fit)
                             VStack(spacing: 0) {
-                                RateView(rate: 3)
+                                RateStars(8)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 Text("あいうえおあいうえおあいうえおあいうえおあいうえおあいうえお")
                                     .font(.custom("HiraKakuProN-W3", size: 14))
@@ -52,11 +53,14 @@ struct HomeView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
-                        // 追加
+                        showingAddView = true
                     }){
                         Image(systemName: "plus")
                     }
                 }
+            }
+            .sheet(isPresented: $showingAddView) {
+                AddView()
             }
         }
     }
@@ -66,10 +70,10 @@ struct HomeView: View {
     let imageDatas: [Data] = [
         UIImage.sample1.pngData()!,
         UIImage.sample2.pngData()!,
-        UIImage.sample3.pngData()!,
-        UIImage.sample4.pngData()!,
-        UIImage.sample5.pngData()!,
-        UIImage.sample6.pngData()!,
+//        UIImage.sample3.pngData()!,
+//        UIImage.sample4.pngData()!,
+//        UIImage.sample5.pngData()!,
+//        UIImage.sample6.pngData()!,
 //        UIImage.sample7.pngData()!,
 //        UIImage.sample8.pngData()!,
 //        UIImage.sample9.pngData()!,

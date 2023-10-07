@@ -1,5 +1,5 @@
 //
-//  RateView.swift
+//  RateStars.swift
 //  YorokobiAlbum
 //
 //  Created by 小原宙 on 2023/10/06.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RateView: View {
+struct RateStars: View {
     enum RateViewType {
         case small
         case large
@@ -16,8 +16,8 @@ struct RateView: View {
     let rate: Int
     let type: RateViewType
 
-    init(rate: Int, type: RateViewType = .small) {
-        self.rate = rate
+    init(_ rate: Int, type: RateViewType = .small) {
+        self.rate = max(min(rate, 5), 0)
         self.type = type
     }
 
@@ -36,5 +36,5 @@ struct RateView: View {
 }
 
 #Preview {
-    RateView(rate: 3)
+    RateStars(3)
 }
