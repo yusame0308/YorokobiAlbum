@@ -28,12 +28,12 @@ struct PhotoSelectView: View {
             .onChange(of: selectedPhotoItem) { _, item in
                 Task {
                     guard let imageData = try await item?.loadTransferable(type: Data.self),
-                          let uiImage = UIImage(data: imageData) else {
+                          let croppedImage = UIImage(data: imageData)?.cropResizedSquare() else {
                         // error alert
                         dismiss()
                         return
                     }
-                    path.append(uiImage)
+                    path.append(croppedImage)
                 }
             }
             .toolbar {

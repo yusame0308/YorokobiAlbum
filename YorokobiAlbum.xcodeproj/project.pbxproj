@@ -21,6 +21,7 @@
 		1A072B2E2ACF16AE0096152D /* RateStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A072B2D2ACF16AE0096152D /* RateStars.swift */; };
 		1A072B322AD1745E0096152D /* PhotoSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A072B312AD1745E0096152D /* PhotoSelectView.swift */; };
 		1AF544062AD3D3110091936C /* ItemFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF544052AD3D3110091936C /* ItemFormView.swift */; };
+		1AF5440A2AD586080091936C /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF544092AD586080091936C /* UIImage+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		1A072B2D2ACF16AE0096152D /* RateStars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateStars.swift; sourceTree = "<group>"; };
 		1A072B312AD1745E0096152D /* PhotoSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectView.swift; sourceTree = "<group>"; };
 		1AF544052AD3D3110091936C /* ItemFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFormView.swift; sourceTree = "<group>"; };
+		1AF544092AD586080091936C /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				1A072B2A2ACEC6E30096152D /* Date+.swift */,
+				1AF544092AD586080091936C /* UIImage+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				1A072B322AD1745E0096152D /* PhotoSelectView.swift in Sources */,
 				1A072B2B2ACEC6E30096152D /* Date+.swift in Sources */,
 				1A072AF82ACC63510096152D /* SampleItem.swift in Sources */,
+				1AF5440A2AD586080091936C /* UIImage+.swift in Sources */,
 				1AF544062AD3D3110091936C /* ItemFormView.swift in Sources */,
 				1A072AF42ACC63510096152D /* YorokobiAlbumApp.swift in Sources */,
 			);

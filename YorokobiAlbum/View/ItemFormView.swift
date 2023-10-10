@@ -16,6 +16,8 @@ struct ItemFormView: View {
         Image(uiImage: image)
             .resizable()
             .scaledToFit()
+            .padding()
+            .background(Color.gray)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {
