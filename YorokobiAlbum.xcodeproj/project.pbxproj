@@ -19,7 +19,8 @@
 		1A072B282ACEB2610096152D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A072B272ACEB2610096152D /* Item.swift */; };
 		1A072B2B2ACEC6E30096152D /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A072B2A2ACEC6E30096152D /* Date+.swift */; };
 		1A072B2E2ACF16AE0096152D /* RateStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A072B2D2ACF16AE0096152D /* RateStars.swift */; };
-		1A072B322AD1745E0096152D /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A072B312AD1745E0096152D /* AddView.swift */; };
+		1A072B322AD1745E0096152D /* PhotoSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A072B312AD1745E0096152D /* PhotoSelectView.swift */; };
+		1AF544062AD3D3110091936C /* ItemFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF544052AD3D3110091936C /* ItemFormView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +56,8 @@
 		1A072B272ACEB2610096152D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1A072B2A2ACEC6E30096152D /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		1A072B2D2ACF16AE0096152D /* RateStars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateStars.swift; sourceTree = "<group>"; };
-		1A072B312AD1745E0096152D /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		1A072B312AD1745E0096152D /* PhotoSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectView.swift; sourceTree = "<group>"; };
+		1AF544052AD3D3110091936C /* ItemFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFormView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				1A072B222ACC69BF0096152D /* HomeView.swift */,
-				1A072B312AD1745E0096152D /* AddView.swift */,
+				1A072B312AD1745E0096152D /* PhotoSelectView.swift */,
+				1AF544052AD3D3110091936C /* ItemFormView.swift */,
 				1A072B2C2ACF16760096152D /* Component */,
 			);
 			path = View;
@@ -319,9 +322,10 @@
 				1A072B2E2ACF16AE0096152D /* RateStars.swift in Sources */,
 				1A072AF62ACC63510096152D /* ContentView.swift in Sources */,
 				1A072B232ACC69BF0096152D /* HomeView.swift in Sources */,
-				1A072B322AD1745E0096152D /* AddView.swift in Sources */,
+				1A072B322AD1745E0096152D /* PhotoSelectView.swift in Sources */,
 				1A072B2B2ACEC6E30096152D /* Date+.swift in Sources */,
 				1A072AF82ACC63510096152D /* SampleItem.swift in Sources */,
+				1AF544062AD3D3110091936C /* ItemFormView.swift in Sources */,
 				1A072AF42ACC63510096152D /* YorokobiAlbumApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
