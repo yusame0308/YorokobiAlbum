@@ -81,7 +81,10 @@ struct ImageCropView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
-                    path.append(.itemForm(image: image))
+                    let upperLine = upperLimit - (direction.isPortrait ? currentPoint.y : currentPoint.x)
+                    let offset = upperLine * image.size.width / imageSize.width
+                    let croppedImage = image.cropResizedSquare(offset: offset)
+                    path.append(.itemForm(image: croppedImage))
                 }, label: {
                     Image(systemName: "arrow.forward.circle.fill")
                 })

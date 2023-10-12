@@ -9,18 +9,18 @@ import UIKit
 
 extension UIImage {
     // リサイズして中心を正方形にトリミング
-    func cropResizedSquare() -> UIImage? {
+    func cropResizedSquare(offset: CGFloat) -> UIImage {
         let minSideWidth = min(size.width, size.height)
-        let resizeWidth = min(minSideWidth, 1000.0)
-        let ratio = resizeWidth / minSideWidth
+        let resizeWidth = min(minSideWidth, 500.0)
+        let resizeRatio = resizeWidth / minSideWidth
 
-        let origin = size.width > size.height
-        ? CGPoint(x: (size.width - minSideWidth) * 0.5 * -ratio, y: 0.0)
-        : CGPoint(x: 0.0, y: (size.height - minSideWidth) * 0.5 * -ratio)
+        let origin = ratio > 1
+        ? CGPoint(x: offset * -resizeRatio, y: 0.0)
+        : CGPoint(x: 0.0, y: offset * -resizeRatio)
 
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: resizeWidth, height: resizeWidth))
-        let croppedImage = renderer.image { c in
-            self.draw(in: CGRect(origin: origin, size: CGSize(width: size.width * ratio, height: size.height * ratio)))
+        let croppedImage = renderer.image { _ in
+            self.draw(in: CGRect(origin: origin, size: CGSize(width: size.width * resizeRatio, height: size.height * resizeRatio)))
         }
 
         return croppedImage
