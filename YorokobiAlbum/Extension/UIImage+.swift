@@ -25,4 +25,8 @@ extension UIImage {
 
         return croppedImage
     }
+
+    var ratio: CGFloat {
+        size.width / size.height
+    }
 }

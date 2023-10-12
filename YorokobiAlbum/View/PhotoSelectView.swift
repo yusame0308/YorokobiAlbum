@@ -28,12 +28,12 @@ struct PhotoSelectView: View {
             .onChange(of: selectedPhotoItem) { _, item in
                 Task {
                     guard let imageData = try await item?.loadTransferable(type: Data.self),
-                          let croppedImage = UIImage(data: imageData)?.cropResizedSquare() else {
+                          let uiImage = UIImage(data: imageData) else {
                         // error alert
                         dismiss()
                         return
                     }
-                    path.append(croppedImage)
+                    path.append(uiImage)
                 }
             }
             .toolbar {
@@ -46,7 +46,7 @@ struct PhotoSelectView: View {
                 }
             }
             .navigationDestination(for: UIImage.self) { image in
-                ItemFormView(dismiss: dismiss, image: image)
+                ImageCropView(dismiss: dismiss, image: image)
                     .navigationBarBackButtonHidden(true)
             }
         }

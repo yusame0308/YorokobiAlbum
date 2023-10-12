@@ -22,6 +22,7 @@
 		1A072B322AD1745E0096152D /* PhotoSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A072B312AD1745E0096152D /* PhotoSelectView.swift */; };
 		1AF544062AD3D3110091936C /* ItemFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF544052AD3D3110091936C /* ItemFormView.swift */; };
 		1AF5440A2AD586080091936C /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF544092AD586080091936C /* UIImage+.swift */; };
+		1AF5440C2AD6AF3C0091936C /* ImageCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5440B2AD6AF3C0091936C /* ImageCropView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		1A072B312AD1745E0096152D /* PhotoSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectView.swift; sourceTree = "<group>"; };
 		1AF544052AD3D3110091936C /* ItemFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFormView.swift; sourceTree = "<group>"; };
 		1AF544092AD586080091936C /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		1AF5440B2AD6AF3C0091936C /* ImageCropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			children = (
 				1A072B222ACC69BF0096152D /* HomeView.swift */,
 				1A072B312AD1745E0096152D /* PhotoSelectView.swift */,
+				1AF5440B2AD6AF3C0091936C /* ImageCropView.swift */,
 				1AF544052AD3D3110091936C /* ItemFormView.swift */,
 				1A072B2C2ACF16760096152D /* Component */,
 			);
@@ -331,6 +334,7 @@
 				1AF5440A2AD586080091936C /* UIImage+.swift in Sources */,
 				1AF544062AD3D3110091936C /* ItemFormView.swift in Sources */,
 				1A072AF42ACC63510096152D /* YorokobiAlbumApp.swift in Sources */,
+				1AF5440C2AD6AF3C0091936C /* ImageCropView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
