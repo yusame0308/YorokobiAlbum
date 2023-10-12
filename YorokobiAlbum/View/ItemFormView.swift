@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ItemFormView: View {
-    let dismiss: DismissAction
+    private let dismiss: DismissAction
+    private let image: UIImage
 
-    let image: UIImage
+    init(dismiss: DismissAction, image: UIImage) {
+        self.dismiss = dismiss
+        self.image = image
+    }
 
     var body: some View {
         Image(uiImage: image)

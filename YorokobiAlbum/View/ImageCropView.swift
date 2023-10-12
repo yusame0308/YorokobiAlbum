@@ -17,6 +17,8 @@ struct ImageCropView: View {
         }
     }
 
+    @Binding private var path: [AddItemViewType]
+
     private let dismiss: DismissAction
     private let image: UIImage
     private let direction: Direction
@@ -29,10 +31,11 @@ struct ImageCropView: View {
     @State private var imageSize = CGSize(width: 0.0, height: 0.0)
     @State private var isFirstSetup = true
 
-    init(dismiss: DismissAction, image: UIImage) {
+    init(dismiss: DismissAction, image: UIImage, path: Binding<[AddItemViewType]>) {
         self.dismiss = dismiss
         self.image = image
         direction = image.ratio > 1 ? .landscape : .portrait
+        self._path = path
     }
 
     var body: some View {
@@ -78,7 +81,7 @@ struct ImageCropView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
-                    // go next
+                    path.append(.itemForm(image: image))
                 }, label: {
                     Image(systemName: "arrow.forward.circle.fill")
                 })

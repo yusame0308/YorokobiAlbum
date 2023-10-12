@@ -12,7 +12,7 @@ struct PhotoSelectView: View {
     @Environment(\.dismiss) private var dismiss
 
     @State private var selectedPhotoItem: PhotosPickerItem? = nil
-    @State private var path = [UIImage]()
+    @State private var path = [AddItemViewType]()
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -33,7 +33,7 @@ struct PhotoSelectView: View {
                         dismiss()
                         return
                     }
-                    path.append(uiImage)
+                    path.append(.imageCrop(image: uiImage))
                 }
             }
             .toolbar {
@@ -45,9 +45,15 @@ struct PhotoSelectView: View {
                     })
                 }
             }
-            .navigationDestination(for: UIImage.self) { image in
-                ImageCropView(dismiss: dismiss, image: image)
-                    .navigationBarBackButtonHidden(true)
+            .navigationDestination(for: AddItemViewType.self) { viewType in
+                switch viewType {
+                case .imageCrop(let image):
+                    ImageCropView(dismiss: dismiss, image: image, path: $path)
+                        .navigationBarBackButtonHidden(true)
+                case .itemForm(let image):
+                    ItemFormView(dismiss: dismiss, image: image)
+                        .navigationBarBackButtonHidden(true)
+                }
             }
         }
     }
