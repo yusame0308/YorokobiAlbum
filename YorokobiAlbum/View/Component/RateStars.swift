@@ -22,7 +22,7 @@ struct RateStars: View {
     }
 
     var body: some View {
-        HStack(spacing: 0) {
+        HStack(spacing: type == .small ? 0 : 2) {
             ForEach(0..<rate, id: \.self) { _ in
                 Image(systemName: "star.fill")
             }
@@ -30,7 +30,7 @@ struct RateStars: View {
                 Image(systemName: "star")
             }
         }
-        .font(.system(size: type == .small ? 10 : 16))
+        .font(.system(size: type == .small ? 10 : 20))
         .foregroundStyle(Color(UIColor.darkGray))
     }
 }

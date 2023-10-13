@@ -26,7 +26,7 @@ struct HomeView: View {
                                 RateStars(8)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 Text("あいうえおあいうえおあいうえおあいうえおあいうえおあいうえお")
-                                    .font(.custom("HiraKakuProN-W3", size: 14))
+                                    .hiraKakuFont(size: 14)
                                     .minimumScaleFactor(0.7)
                                     .multilineTextAlignment(.center)
                                     .lineLimit(3)

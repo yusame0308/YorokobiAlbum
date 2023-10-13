@@ -9,13 +9,13 @@ import Foundation
 
 final class Item {
     var imageData: Data
-    var comment: String
+    var title: String
     var rate: Int
     var createdAt: Date
 
-    init(imageData: Data, comment: String, rate: Int, createdAt: Date) {
+    init(imageData: Data, title: String, rate: Int, createdAt: Date) {
         self.imageData = imageData
-        self.comment = comment
+        self.title = title
         self.rate = rate
         self.createdAt = Date()
     }
