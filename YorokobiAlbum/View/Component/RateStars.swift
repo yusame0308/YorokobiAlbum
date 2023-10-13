@@ -17,7 +17,7 @@ struct RateStars: View {
     let type: RateViewType
 
     init(_ rate: Int, type: RateViewType = .small) {
-        self.rate = max(min(rate, 5), 0)
+        self.rate = rate.between(1, 5)
         self.type = type
     }
 
@@ -30,7 +30,7 @@ struct RateStars: View {
                 Image(systemName: "star")
             }
         }
-        .font(.system(size: type == .small ? 10 : 20))
+        .font(.system(size: type == .small ? 10 : 18))
         .foregroundStyle(Color(UIColor.darkGray))
     }
 }

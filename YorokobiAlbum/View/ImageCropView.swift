@@ -71,6 +71,7 @@ struct ImageCropView: View {
                 setup(viewSize: viewSize)
             }
         }
+        .interactiveDismissDisabled(true)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {

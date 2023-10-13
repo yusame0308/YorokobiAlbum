@@ -11,10 +11,11 @@ struct ItemFormView: View {
     private let dismiss: DismissAction
 
     private let maxTitleLength = 30
-    @State private var showWarningText = false
+    @State private var titleIsTooLong = false
     @FocusState private var textFieldIsFocused: Bool
 
     private let image: UIImage
+    @State private var rate = 3
     @State private var title: String = ""
 
     init(dismiss: DismissAction, image: UIImage) {
@@ -23,27 +24,28 @@ struct ItemFormView: View {
     }
 
     var body: some View {
-        VStack(spacing: textFieldIsFocused ? 24 : 96) {
-            VStack(spacing: 16) {
+        VStack(spacing: textFieldIsFocused ? 0 : 36) {
+            VStack(spacing: 0) {
                 Image(uiImage: image)
                     .resizable()
-                    .frame(minWidth: 100)
+                    .frame(minWidth: 150, minHeight: 150)
                     .aspectRatio(1, contentMode: .fit)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)
                             .stroke(Color.gray.opacity(0.4), lineWidth: 1)
                     )
-                    .padding(.horizontal, 16)
-                RateStars(3, type: .large)
+                SelectableRateStars($rate, contentInset: .init(top: 12, leading: 48, bottom: 32, trailing: 48))
             }
+            .padding(.horizontal, 32)
             VStack(spacing: 4) {
                 TextField("タイトル", text: $title, axis: .vertical)
                     .focused($textFieldIsFocused)
                     .font(.system(size: 18))
-                    .lineLimit(3)
+                    .lineLimit(2)
                     .multilineTextAlignment(.center)
-                    .padding(16)
+                    .padding(.vertical, 12)
+                    .padding(.horizontal, 16)
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)
                             .stroke(Color.gray.opacity(0.8), lineWidth: 1)
@@ -55,20 +57,24 @@ struct ItemFormView: View {
                             }
                         }
                         withAnimation {
-                            showWarningText = text.count > maxTitleLength
+                            titleIsTooLong = text.count > maxTitleLength
                         }
                     }
                 Text("30文字以内で入力してください")
                     .font(.caption)
                     .foregroundStyle(Color.red)
-                    .opacity(showWarningText ? 1 : 0)
+                    .opacity(titleIsTooLong ? 1 : 0)
             }
-            Spacer()
+            Spacer(minLength: 4)
         }
-        .padding(.top, 16)
+        .padding(.top, textFieldIsFocused ? 0 : 16)
         .padding(.horizontal, 24)
         .background(Color.white)
-        .animation(.easeInOut, value: textFieldIsFocused)
+        .interactiveDismissDisabled(true)
+        .animation(.easeOut, value: textFieldIsFocused)
+        .onAppear {
+            textFieldIsFocused = true
+        }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
@@ -83,6 +89,7 @@ struct ItemFormView: View {
                 }, label: {
                     Image(systemName: "plus")
                 })
+                .disabled(titleIsTooLong || title.isEmpty)
             }
         }
     }
