@@ -25,15 +25,15 @@ struct YorokobiAlbumApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView(imageDatas: [
-                UIImage.sample1.pngData()!,
-                UIImage.sample2.pngData()!,
-                UIImage.sample3.pngData()!,
-                UIImage.sample4.pngData()!,
-                UIImage.sample5.pngData()!,
-                UIImage.sample6.pngData()!
+            HomeView(items: [
+                Item(imageData: UIImage.sample1.pngData()!, title: "title1", rate: 3, createdAt: Date()),
+                Item(imageData: UIImage.sample2.pngData()!, title: "title2", rate: 4, createdAt: Date()),
+                Item(imageData: UIImage.sample3.pngData()!, title: "title3", rate: 2, createdAt: Date()),
+                Item(imageData: UIImage.sample4.pngData()!, title: "title4", rate: 5, createdAt: Date()),
+                Item(imageData: UIImage.sample5.pngData()!, title: "title5", rate: 1, createdAt: Date()),
+                Item(imageData: UIImage.sample6.pngData()!, title: "title6", rate: 4, createdAt: Date())
             ])
         }
-        .modelContainer(sharedModelContainer)
+        //        .modelContainer(sharedModelContainer)
     }
 }

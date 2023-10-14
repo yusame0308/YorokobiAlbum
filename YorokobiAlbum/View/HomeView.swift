@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct HomeView: View {
-    let imageDatas: [Data]
-    static let itemSpacing = 12.0
-    let columns = [GridItem(.adaptive(minimum: 160, maximum: 200), spacing: itemSpacing)]
-    @State var showingAddView = false
+    let items: [Item]
+    @State private var presentation: Presentation?
+    static private let itemSpacing = 12.0
+    private let columns = [GridItem(.adaptive(minimum: 160, maximum: 200), spacing: itemSpacing)]
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: Self.itemSpacing) {
-                    ForEach(imageDatas, id: \.self) { imageData in
+                    ForEach(items, id: \.self) { item in
                         VStack(spacing: 5) {
-                            Image(uiImage: UIImage(data: imageData)!)
+                            Image(uiImage: UIImage(data: item.imageData)!)
                                 .resizable()
                                 .aspectRatio(1.0, contentMode: .fit)
                             VStack(spacing: 0) {
-                                RateStars(8)
+                                RateStars(item.rate)
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                                Text("あいうえおあいうえおあいうえおあいうえおあいうえおあいうえお")
+                                Text(item.title)
                                     .hiraKakuFont(size: 14)
                                     .minimumScaleFactor(0.7)
                                     .multilineTextAlignment(.center)
@@ -38,6 +38,9 @@ struct HomeView: View {
                         }
                         .background(Color.white)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .onTapGesture {
+                            presentation = .itemDetail(item)
+                        }
                     }
                 }
                 .padding(.horizontal, Self.itemSpacing)
@@ -53,32 +56,44 @@ struct HomeView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
-                        showingAddView = true
+                        presentation = .addItem
                     }){
                         Image(systemName: "plus")
                     }
                 }
             }
-            .sheet(isPresented: $showingAddView) {
+            .sheet(item: $presentation) { $0 }
+        }
+    }
+}
+
+extension HomeView {
+    private enum Presentation: View, Hashable, Identifiable {
+        case addItem
+        case itemDetail(_ item: Item)
+
+        var id: Self { self }
+
+        var body: some View {
+            switch self {
+            case .addItem:
                 PhotoSelectView()
+            case .itemDetail(let item):
+                ItemDetailView(item: item)
             }
         }
     }
 }
 
 #Preview {
-    let imageDatas: [Data] = [
-        UIImage.sample1.pngData()!,
-        UIImage.sample2.pngData()!,
-//        UIImage.sample3.pngData()!,
-//        UIImage.sample4.pngData()!,
-//        UIImage.sample5.pngData()!,
-//        UIImage.sample6.pngData()!,
-//        UIImage.sample7.pngData()!,
-//        UIImage.sample8.pngData()!,
-//        UIImage.sample9.pngData()!,
-//        UIImage.sample10.pngData()!
+    let items: [Item] = [
+        Item(imageData: UIImage.sample1.pngData()!, title: "title1", rate: 3, createdAt: Date()),
+        Item(imageData: UIImage.sample2.pngData()!, title: "title2", rate: 4, createdAt: Date()),
+        Item(imageData: UIImage.sample3.pngData()!, title: "title3", rate: 2, createdAt: Date()),
+        Item(imageData: UIImage.sample4.pngData()!, title: "title4", rate: 5, createdAt: Date()),
+        Item(imageData: UIImage.sample5.pngData()!, title: "title5", rate: 1, createdAt: Date()),
+        Item(imageData: UIImage.sample6.pngData()!, title: "title6", rate: 4, createdAt: Date())
     ]
 
-    return HomeView(imageDatas: imageDatas)
+    return HomeView(items: items)
 }
