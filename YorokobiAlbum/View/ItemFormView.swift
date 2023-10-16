@@ -32,7 +32,7 @@ struct ItemFormView: View {
                     .aspectRatio(1, contentMode: .fit)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .overlay(
-                        RoundedRectangle(cornerRadius: 6)
+                        RoundedRectangle(cornerRadius: 8)
                             .stroke(Color.gray.opacity(0.4), lineWidth: 1)
                     )
                 SelectableRateStars($rate, contentInset: .init(top: 12, leading: 48, bottom: 32, trailing: 48))
