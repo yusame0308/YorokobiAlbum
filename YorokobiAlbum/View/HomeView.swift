@@ -19,7 +19,7 @@ struct HomeView: View {
                 LazyVGrid(columns: columns, spacing: Self.itemSpacing) {
                     ForEach(items, id: \.self) { item in
                         VStack(spacing: 5) {
-                            Image(uiImage: UIImage(data: item.imageData)!)
+                            Image(uiImage: item.image)
                                 .resizable()
                                 .aspectRatio(1.0, contentMode: .fit)
                             VStack(spacing: 0) {

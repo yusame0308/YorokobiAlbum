@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 final class Item {
     private let id: String
-    var imageData: Data
+    private let imageData: Data
     var title: String
     var rate: Int
     var createdAt: Date
@@ -20,6 +21,10 @@ final class Item {
         self.title = title
         self.rate = rate
         self.createdAt = Date()
+    }
+
+    var image: UIImage {
+        UIImage(data: imageData) ?? UIImage.noimage
     }
 }
 
