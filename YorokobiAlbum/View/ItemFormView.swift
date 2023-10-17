@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ItemFormView: View {
+    @Environment(\.modelContext) private var modelContext
+
     private let dismiss: DismissAction
 
     private let maxTitleLength = 30
@@ -85,7 +87,9 @@ struct ItemFormView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
-                    // add item
+                    let item = Item(image: image, title: title, rate: rate)
+                    modelContext.insert(item)
+                    dismiss()
                 }, label: {
                     Image(systemName: "plus")
                 })

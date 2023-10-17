@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ItemDetailView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
     let item: Item
 
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 12) {
             Image(uiImage: item.image)
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
@@ -24,7 +26,9 @@ struct ItemDetailView: View {
                 }
                 Spacer()
                 Button(action: {
-
+                    // TODO: ダイアログ表示
+                    modelContext.delete(item)
+                    dismiss()
                 }, label: {
                     Image(systemName: "trash.circle")
                         .font(.system(size: 24))
@@ -41,10 +45,10 @@ struct ItemDetailView: View {
                 .lineSpacing(8)
                 .padding(.horizontal, 48)
         }
-        .padding(.bottom, 36)
+        .padding(.bottom, 48)
     }
 }
 
-#Preview {
-    ItemDetailView(item: Item(imageData: UIImage.sample1.pngData()!, title: "title", rate: 3, createdAt: Date()))
-}
+//#Preview {
+//    ItemDetailView(item: Item(imageData: UIImage.sample1.pngData()!, title: "title", rate: 3, createdAt: Date()))
+//}

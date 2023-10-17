@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1A072AF42ACC63510096152D /* YorokobiAlbumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A072AF32ACC63510096152D /* YorokobiAlbumApp.swift */; };
-		1A072AF62ACC63510096152D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A072AF52ACC63510096152D /* ContentView.swift */; };
-		1A072AF82ACC63510096152D /* SampleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A072AF72ACC63510096152D /* SampleItem.swift */; };
 		1A072AFA2ACC63520096152D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A072AF92ACC63520096152D /* Assets.xcassets */; };
 		1A072AFD2ACC63520096152D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A072AFC2ACC63520096152D /* Preview Assets.xcassets */; };
 		1A072B072ACC63520096152D /* YorokobiAlbumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A072B062ACC63520096152D /* YorokobiAlbumTests.swift */; };
@@ -50,8 +48,6 @@
 /* Begin PBXFileReference section */
 		1A072AF02ACC63510096152D /* YorokobiAlbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YorokobiAlbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A072AF32ACC63510096152D /* YorokobiAlbumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YorokobiAlbumApp.swift; sourceTree = "<group>"; };
-		1A072AF52ACC63510096152D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		1A072AF72ACC63510096152D /* SampleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleItem.swift; sourceTree = "<group>"; };
 		1A072AF92ACC63520096152D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A072AFC2ACC63520096152D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1A072B022ACC63520096152D /* YorokobiAlbumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YorokobiAlbumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,11 +120,8 @@
 			children = (
 				1A072B242ACEB1BB0096152D /* Model */,
 				1A072B252ACEB1C30096152D /* View */,
-				1A072B262ACEB1C90096152D /* ViewModel */,
 				1A072B292ACEC6B20096152D /* Extension */,
 				1A072AF32ACC63510096152D /* YorokobiAlbumApp.swift */,
-				1A072AF52ACC63510096152D /* ContentView.swift */,
-				1A072AF72ACC63510096152D /* SampleItem.swift */,
 				1A072AF92ACC63520096152D /* Assets.xcassets */,
 				1A072AFB2ACC63520096152D /* Preview Content */,
 			);
@@ -180,13 +173,6 @@
 				1A072B2C2ACF16760096152D /* Component */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		1A072B262ACEB1C90096152D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		1A072B292ACEC6B20096152D /* Extension */ = {
@@ -342,12 +328,10 @@
 				1A072B282ACEB2610096152D /* Item.swift in Sources */,
 				1A072B2E2ACF16AE0096152D /* RateStars.swift in Sources */,
 				1A602AAC2AD9AE5E00F1B638 /* Int+.swift in Sources */,
-				1A072AF62ACC63510096152D /* ContentView.swift in Sources */,
 				1A072B232ACC69BF0096152D /* HomeView.swift in Sources */,
 				1A072B322AD1745E0096152D /* PhotoSelectView.swift in Sources */,
 				1A072B2B2ACEC6E30096152D /* Date+.swift in Sources */,
 				1A602AA62AD843FE00F1B638 /* ViewType.swift in Sources */,
-				1A072AF82ACC63510096152D /* SampleItem.swift in Sources */,
 				1A602AA82AD9135300F1B638 /* View+.swift in Sources */,
 				1AF5440A2AD586080091936C /* UIImage+.swift in Sources */,
 				1AF544062AD3D3110091936C /* ItemFormView.swift in Sources */,

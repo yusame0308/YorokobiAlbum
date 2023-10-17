@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeView: View {
-    let items: [Item]
+    @Query private var items: [Item]
+
     @State private var presentation: Presentation?
     static private let itemSpacing = 12.0
     private let columns = [GridItem(.adaptive(minimum: 160, maximum: 200), spacing: itemSpacing)]
@@ -85,15 +87,15 @@ extension HomeView {
     }
 }
 
-#Preview {
-    let items: [Item] = [
-        Item(imageData: UIImage.sample1.pngData()!, title: "title1", rate: 3, createdAt: Date()),
-        Item(imageData: UIImage.sample2.pngData()!, title: "title2", rate: 4, createdAt: Date()),
-        Item(imageData: UIImage.sample3.pngData()!, title: "title3", rate: 2, createdAt: Date()),
-        Item(imageData: UIImage.sample4.pngData()!, title: "title4", rate: 5, createdAt: Date()),
-        Item(imageData: UIImage.sample5.pngData()!, title: "title5", rate: 1, createdAt: Date()),
-        Item(imageData: UIImage.sample6.pngData()!, title: "title6", rate: 4, createdAt: Date())
-    ]
-
-    return HomeView(items: items)
-}
+//#Preview {
+//    let items: [Item] = [
+//        Item(imageData: UIImage.sample1.pngData()!, title: "title1", rate: 3, createdAt: Date()),
+//        Item(imageData: UIImage.sample2.pngData()!, title: "title2", rate: 4, createdAt: Date()),
+//        Item(imageData: UIImage.sample3.pngData()!, title: "title3", rate: 2, createdAt: Date()),
+//        Item(imageData: UIImage.sample4.pngData()!, title: "title4", rate: 5, createdAt: Date()),
+//        Item(imageData: UIImage.sample5.pngData()!, title: "title5", rate: 1, createdAt: Date()),
+//        Item(imageData: UIImage.sample6.pngData()!, title: "title6", rate: 4, createdAt: Date())
+//    ]
+//
+//    return HomeView(items: items)
+//}

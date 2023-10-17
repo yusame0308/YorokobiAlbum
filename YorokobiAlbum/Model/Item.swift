@@ -7,17 +7,19 @@
 
 import Foundation
 import UIKit
+import SwiftData
 
+@Model
 final class Item {
     private let id: String
     private let imageData: Data
     var title: String
-    var rate: Int
-    var createdAt: Date
+    let rate: Int
+    let createdAt: Date
 
-    init(imageData: Data, title: String, rate: Int, createdAt: Date) {
+    init(image: UIImage, title: String, rate: Int) {
         self.id = UUID().uuidString
-        self.imageData = imageData
+        self.imageData = image.jpegData(compressionQuality: 1.0) ?? Data()
         self.title = title
         self.rate = rate
         self.createdAt = Date()
