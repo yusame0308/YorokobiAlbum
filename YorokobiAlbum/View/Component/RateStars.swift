@@ -10,7 +10,24 @@ import SwiftUI
 struct RateStars: View {
     enum RateViewType {
         case small
+        case medium
         case large
+
+        var spacing: CGFloat {
+            switch self {
+            case .small: 0.0
+            case .medium: 2.0
+            case .large: 3.0
+            }
+        }
+
+        var size: CGFloat {
+            switch self {
+            case .small: 10.0
+            case .medium: 18.0
+            case .large: 20.0
+            }
+        }
     }
 
     let rate: Int
@@ -22,7 +39,7 @@ struct RateStars: View {
     }
 
     var body: some View {
-        HStack(spacing: type == .small ? 0 : 2) {
+        HStack(spacing: type.spacing) {
             ForEach(0..<rate, id: \.self) { _ in
                 Image(systemName: "star.fill")
             }
@@ -30,7 +47,7 @@ struct RateStars: View {
                 Image(systemName: "star")
             }
         }
-        .font(.system(size: type == .small ? 10 : 18))
+        .font(.system(size: type.size))
         .foregroundStyle(Color(UIColor.darkGray))
     }
 }

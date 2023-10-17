@@ -19,7 +19,7 @@ struct SelectableRateStars: View {
     }
 
     var body: some View {
-        RateStars(rate, type: .large)
+        RateStars(rate, type: .medium)
             .padding(contentInset)
             .background(Color.white)
             .gesture(dragGesture)
