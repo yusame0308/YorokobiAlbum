@@ -29,6 +29,7 @@ struct ImageCropView: View {
     @State private var upperLimit = 0.0
     @State private var lowerLimit = 0.0
     @State private var imageSize = CGSize(width: 0.0, height: 0.0)
+    @State private var borderWidth = 0.0
     @State private var isFirstSetup = true
 
     init(dismiss: DismissAction, image: UIImage, path: Binding<[AddItemViewType]>) {
@@ -51,8 +52,7 @@ struct ImageCropView: View {
                             .opacity(0.5)
                             .overlay {
                                 Rectangle()
-                                    .aspectRatio(1, contentMode: .fit)
-                                    .padding(padding)
+                                    .frame(width: borderWidth, height: borderWidth)
                                     .position(x: geometry.size.width/2, y: geometry.size.height/2)
                                     .blendMode(.destinationOut)
                             }
@@ -119,7 +119,7 @@ struct ImageCropView: View {
     }
 
     private func setup(viewSize: CGSize) {
-        let borderLength = viewSize.width - padding * 2
+        let borderLength = min(viewSize.width, viewSize.height) - padding * 2
         let imageLength = direction.isPortrait
         ? borderLength / image.ratio
         : borderLength * image.ratio
@@ -130,6 +130,7 @@ struct ImageCropView: View {
         currentPoint = centerPoint
         initialPosition = centerValue
         imageSize = direction.isPortrait ? CGSize(width: borderLength, height: imageLength) : CGSize(width: imageLength, height: borderLength)
+        borderWidth = borderLength
     }
 }
 
