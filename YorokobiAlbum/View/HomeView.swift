@@ -16,13 +16,14 @@ struct HomeView: View {
     static private let itemSpacing = 12.0
     private let columns = [GridItem(.adaptive(minimum: 160, maximum: 200), spacing: itemSpacing)]
 
-    @State private var sortOrder = [SortDescriptor<Item>]()
+    @State private var sortOrder: [SortDescriptor<Item>]
     @State private var showItemList = true
 
     init() {
         let sortTypeNum = UserDefaults.standard.integer(forKey: "sortType")
-        selectedSortType = SortType(rawValue: sortTypeNum) ?? .dateDesc
-        sortOrder = selectedSortType.sortOrder
+        let sortType = SortType(rawValue: sortTypeNum) ?? .dateDesc
+        selectedSortType = sortType
+        sortOrder = sortType.sortOrder
     }
 
     var body: some View {
