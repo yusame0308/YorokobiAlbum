@@ -11,6 +11,7 @@ struct ItemDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     let item: Item
+    @State private var showingDeleteAlert = false
 
     var body: some View {
         VStack(spacing: 12) {
@@ -26,9 +27,7 @@ struct ItemDetailView: View {
                 }
                 Spacer()
                 Button(action: {
-                    // TODO: ダイアログ表示
-                    modelContext.delete(item)
-                    dismiss()
+                    showingDeleteAlert = true
                 }, label: {
                     Image(systemName: "trash.circle")
                         .font(.system(size: 24))
@@ -46,6 +45,12 @@ struct ItemDetailView: View {
                 .padding(.horizontal, 48)
         }
         .padding(.bottom, 48)
+        .alert("削除しますか？", isPresented: $showingDeleteAlert){
+            Button("削除", role: .destructive){
+                modelContext.delete(item)
+                dismiss()
+            }
+        }
     }
 }
 
