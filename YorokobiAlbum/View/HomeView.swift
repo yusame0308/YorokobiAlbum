@@ -9,40 +9,28 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
-    @Query private var items: [Item]
-
+    @Environment(\.modelContext) private var modelContext
+    @State private var selectedSortType: SortType
     @State private var presentation: Presentation?
+
     static private let itemSpacing = 12.0
     private let columns = [GridItem(.adaptive(minimum: 160, maximum: 200), spacing: itemSpacing)]
+
+    @State private var sortOrder = [SortDescriptor<Item>]()
+    @State private var showItemList = true
+
+    init() {
+        let sortTypeNum = UserDefaults.standard.integer(forKey: "sortType")
+        selectedSortType = SortType(rawValue: sortTypeNum) ?? .dateDesc
+        sortOrder = selectedSortType.sortOrder
+    }
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: Self.itemSpacing) {
-                    ForEach(items, id: \.self) { item in
-                        VStack(spacing: 5) {
-                            Image(uiImage: item.image)
-                                .resizable()
-                                .aspectRatio(1.0, contentMode: .fit)
-                            VStack(spacing: 0) {
-                                RateStars(item.rate)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                Text(item.title)
-                                    .hiraKakuFont(size: 14)
-                                    .minimumScaleFactor(0.7)
-                                    .multilineTextAlignment(.center)
-                                    .lineLimit(3)
-                                    .kerning(1)
-                                    .frame(height: 50)
-                            }
-                            .padding(.horizontal, 12)
-                            .padding(.bottom, 10)
-                        }
-                        .background(Color.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                        .onTapGesture {
-                            presentation = .itemDetail(item)
-                        }
+                    if showItemList {
+                        ItemList(sort: sortOrder, presentation: $presentation)
                     }
                 }
                 .padding(.horizontal, Self.itemSpacing)
@@ -50,10 +38,27 @@ struct HomeView: View {
             .background(Color(UIColor.secondarySystemBackground))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {
-                        // 並び替え
-                    }) {
+                    Menu {
+                        Picker(selection: $selectedSortType) {
+                            ForEach(SortType.allCases, id: \.self) { type in
+                                Text(type.description)
+                                    .tag(type)
+                            }
+                        } label: {
+                            EmptyView()
+                        }
+                    } label: {
                         Image(systemName: "arrow.up.and.down.text.horizontal")
+                    }
+                    .onChange(of: selectedSortType) { _, type in
+                        showItemList = false
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            sortOrder = type.sortOrder
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                            showItemList = true
+                        }
+                        UserDefaults.standard.set(type.rawValue, forKey: "sortType")
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
@@ -65,12 +70,13 @@ struct HomeView: View {
                 }
             }
             .sheet(item: $presentation) { $0 }
+            .animation(.easeOut(duration: 0.15), value: showItemList)
         }
     }
 }
 
 extension HomeView {
-    private enum Presentation: View, Hashable, Identifiable {
+    enum Presentation: View, Hashable, Identifiable {
         case addItem
         case itemDetail(_ item: Item)
 
@@ -82,6 +88,31 @@ extension HomeView {
                 PhotoSelectView()
             case .itemDetail(let item):
                 ItemDetailView(item: item)
+            }
+        }
+    }
+
+    private enum SortType: Int, Hashable, CaseIterable {
+        case dateDesc
+        case dateAsc
+        case starDesc
+        case starAsc
+
+        var sortOrder: [SortDescriptor<Item>] {
+            switch self {
+            case .dateDesc: [SortDescriptor(\Item.createdAt, order: .reverse)]
+            case .dateAsc: [SortDescriptor(\Item.createdAt)]
+            case .starDesc: [SortDescriptor(\Item.rate, order: .reverse), SortDescriptor(\Item.createdAt, order: .reverse)]
+            case .starAsc: [SortDescriptor(\Item.rate), SortDescriptor(\Item.createdAt, order: .reverse)]
+            }
+        }
+
+        var description: String {
+            switch self {
+            case .dateDesc: "新しい順"
+            case .dateAsc: "古い順"
+            case .starDesc: "スターが多い順"
+            case .starAsc: "スターが少ない順"
             }
         }
     }

@@ -29,7 +29,6 @@ struct PhotoSelectView: View {
                 Task {
                     guard let imageData = try await item?.loadTransferable(type: Data.self),
                           let uiImage = UIImage(data: imageData) else {
-                        // error alert
                         dismiss()
                         return
                     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A03DE382AE0FDF500065B27 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A03DE372AE0FDF500065B27 /* ItemList.swift */; };
 		1A072AF42ACC63510096152D /* YorokobiAlbumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A072AF32ACC63510096152D /* YorokobiAlbumApp.swift */; };
 		1A072AFA2ACC63520096152D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A072AF92ACC63520096152D /* Assets.xcassets */; };
 		1A072AFD2ACC63520096152D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A072AFC2ACC63520096152D /* Preview Assets.xcassets */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A03DE372AE0FDF500065B27 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		1A072AF02ACC63510096152D /* YorokobiAlbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YorokobiAlbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A072AF32ACC63510096152D /* YorokobiAlbumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YorokobiAlbumApp.swift; sourceTree = "<group>"; };
 		1A072AF92ACC63520096152D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			children = (
 				1A072B2D2ACF16AE0096152D /* RateStars.swift */,
 				1A602AA92AD9A2AF00F1B638 /* SelectableRateStars.swift */,
+				1A03DE372AE0FDF500065B27 /* ItemList.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A072B282ACEB2610096152D /* Item.swift in Sources */,
+				1A03DE382AE0FDF500065B27 /* ItemList.swift in Sources */,
 				1A072B2E2ACF16AE0096152D /* RateStars.swift in Sources */,
 				1A602AAC2AD9AE5E00F1B638 /* Int+.swift in Sources */,
 				1A072B232ACC69BF0096152D /* HomeView.swift in Sources */,

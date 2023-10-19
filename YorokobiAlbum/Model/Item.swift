@@ -11,7 +11,7 @@ import SwiftData
 
 @Model
 final class Item {
-    private let id: String
+    let id: String
     private let imageData: Data
     var title: String
     let rate: Int
@@ -30,7 +30,7 @@ final class Item {
     }
 }
 
-extension Item: Hashable {
+extension Item: Hashable, Identifiable {
     static func == (lhs: Item, rhs: Item) -> Bool {
         lhs.id == rhs.id
     }
