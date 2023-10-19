@@ -13,6 +13,7 @@ struct PhotoSelectView: View {
 
     @State private var selectedPhotoItem: PhotosPickerItem? = nil
     @State private var path = [AddItemViewType]()
+    @State private var showingErrorAlert = false
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -29,7 +30,7 @@ struct PhotoSelectView: View {
                 Task {
                     guard let imageData = try await item?.loadTransferable(type: Data.self),
                           let uiImage = UIImage(data: imageData) else {
-                        dismiss()
+                        showingErrorAlert = true
                         return
                     }
                     path.append(.imageCrop(image: uiImage))
@@ -44,6 +45,13 @@ struct PhotoSelectView: View {
                     })
                 }
             }
+            .alert("エラーが発生しました", isPresented: $showingErrorAlert, actions: {
+                Button("OK") {
+                    dismiss()
+                }
+            }, message: {
+                Text("もう一度やり直してください")
+            })
             .navigationDestination(for: AddItemViewType.self) { viewType in
                 switch viewType {
                 case .imageCrop(let image):

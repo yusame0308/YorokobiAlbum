@@ -45,7 +45,7 @@ struct ItemDetailView: View {
                 .padding(.horizontal, 48)
         }
         .padding(.bottom, 48)
-        .alert("削除しますか？", isPresented: $showingDeleteAlert){
+        .alert("削除しますか？", isPresented: $showingDeleteAlert) {
             Button("削除", role: .destructive){
                 modelContext.delete(item)
                 dismiss()
