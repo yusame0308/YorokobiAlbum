@@ -67,8 +67,15 @@ struct ImageCropView: View {
             }
             .background(Color.white)
             .gesture(dragGesture)
-            .onChange(of: geometry.size) { _, viewSize in
-                setup(viewSize: viewSize)
+            .onChange(of: geometry.size) { oldViewSize, viewSize in
+                if UIDevice.current.userInterfaceIdiom != .phone {
+                    setup(viewSize: viewSize)
+                    return
+                }
+                if isFirstSetup {
+                    setup(viewSize: viewSize)
+                    isFirstSetup = false
+                }
             }
         }
         .interactiveDismissDisabled(true)
@@ -112,8 +119,6 @@ struct ImageCropView: View {
     }
 
     private func setup(viewSize: CGSize) {
-        guard isFirstSetup else { return }
-
         let borderLength = viewSize.width - padding * 2
         let imageLength = direction.isPortrait
         ? borderLength / image.ratio
@@ -125,8 +130,6 @@ struct ImageCropView: View {
         currentPoint = centerPoint
         initialPosition = centerValue
         imageSize = direction.isPortrait ? CGSize(width: borderLength, height: imageLength) : CGSize(width: imageLength, height: borderLength)
-
-        isFirstSetup = false
     }
 }
 
