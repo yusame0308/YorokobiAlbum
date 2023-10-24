@@ -279,11 +279,12 @@
 			};
 			buildConfigurationList = 1A072AEB2ACC63510096152D /* Build configuration list for PBXProject "YorokobiAlbum" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 1A072AE72ACC63510096152D;
 			productRefGroup = 1A072AF12ACC63510096152D /* Products */;
